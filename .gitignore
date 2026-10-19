@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+.DS_Store
+
+# Runtime files
+runs/
+output/
+outputs/
+results/
+*.log
+**/*summary*.json
+data/
+
+# Model parameters
+checkpoints/
+*.pt
+*.pth
+!checkpoints/
+checkpoints/*
+!checkpoints/README.md
+!checkpoints/sparc_pretrained.pt
+
+# Reconstructed calibration
+examples/calibration/mask.mat
+*.restoring

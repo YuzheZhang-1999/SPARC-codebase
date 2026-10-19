@@ -1,0 +1,39 @@
+# Paths are relative to this configuration file.
+model:
+  dim: 32
+  num_classes: 2
+  spectral_bands: 60
+  mamba_backend: mamba
+
+data:
+  root: ../data
+  split_file: splits.json
+  response_file: mask.mat
+  spectral_bands: 60
+  num_classes: 2
+  raw_normalization: max
+  spectral_scale: 1.0
+  augment: true
+
+teacher:
+  source: online  # online frozen teacher, or cached teacher_targets/*.mat
+  checkpoint: ../runs/teacher/best.pt
+  output_dir: ../runs/teacher
+  dim: 32
+
+training:
+  output_dir: ../runs/sparc
+  epochs: 200
+  batch_size: 4
+  accumulation_steps: 4
+  num_workers: 4
+  seed: 0
+  learning_rate: 0.0001
+  scheduler_factor: 0.5
+  scheduler_patience: 10
+
+loss:
+  alpha: 1.0
+  beta: 0.2
+  tv_reduction: sum
+  epsilon: 0.000001
